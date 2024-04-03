@@ -41,8 +41,8 @@ def game(lower_limit=None, upper_limit=None, random_num=None, guess=None):
     else:
         print("You Won!!")
 
-    jogar_novamente = input("Play again? (Y/n): ")
-    if jogar_novamente in ["", "Y", "y"]:
+    play_again = input("Play again? (Y/n): ")
+    if play_again in ["", "Y", "y"]:
         game()
 
     print("End Game!!")
