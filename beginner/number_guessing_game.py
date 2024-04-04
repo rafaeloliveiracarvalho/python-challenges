@@ -1,51 +1,33 @@
 import random
 
 
-def game(lower_limit=None, upper_limit=None, random_num=None, guess=None):
-    lower_limit = (
-        int(input("Type the lower limite of range (integer): "))
-        if not lower_limit
-        else lower_limit
-    )
-
-    upper_limit = (
-        int(input("Type the upper limit of range (integer): "))
-        if not upper_limit
-        else upper_limit
-    )
+def game():
+    lower_limit = int(input("Type the lower limite of range (integer): "))
+    upper_limit = int(input("Type the upper limit of range (integer): "))
 
     print(f"Try guess a number of {lower_limit} to {upper_limit}")
 
-    random_num = (
-        random.randint(lower_limit, upper_limit) if not random_num else random_num
-    )
+    random_num = random.randint(lower_limit, upper_limit)
 
-    guess = int(input("What's your guess?\n")) if not guess else guess
+    end_game = False
 
-    if guess > random_num:
-        print("Upper Guess!! Try again.")
-        game(
-            lower_limit=lower_limit,
-            upper_limit=upper_limit,
-            random_num=random_num,
-        )
+    while not end_game:
+        guess = int(input("What's your guess?\n"))
 
-    elif guess < random_num:
-        print("Upper Guess!! Try again.")
-        game(
-            lower_limit=lower_limit,
-            upper_limit=upper_limit,
-            random_num=random_num,
-        )
-
-    else:
-        print("You Won!!")
+        if guess > random_num:
+            print("Upper Guess!! Try again.")
+        elif guess < random_num:
+            print("Lower Guess!! Try again.")
+        else:
+            print("You Won!!")
+            end_game = guess == random_num
 
     play_again = input("Play again? (Y/n): ")
+
     if play_again in ["", "Y", "y"]:
         game()
-
-    print("End Game!!")
+    else:
+        print("End Game!!")
 
 
 if __name__ == "__main__":
@@ -54,3 +36,4 @@ if __name__ == "__main__":
 # Future Features
 # 1 - Integer validation
 # 2 - Ensure that lower limit is less than upper limits
+# 3 - Tries limit 3
